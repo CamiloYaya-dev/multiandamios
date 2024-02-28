@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <CODIGO>1</CODIGO>
+    <NOMBRE>ECOPETROL</NOMBRE>
+    <ESTADO>APROBADO</ESTADO>
+    <OBSERVACION>NEGOCIO DE PRUEBA</OBSERVACION>
+  </Table>
+  <Table>
+    <CODIGO>2</CODIGO>
+    <NOMBRE>ESTRAVAL</NOMBRE>
+    <ESTADO>EN ESPERA</ESTADO>
+    <OBSERVACION>NEGOCIO DE PRUEBA</OBSERVACION>
+  </Table>
+</NewDataSet>

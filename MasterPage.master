@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Multiandamios</title>
+    <meta name="keywords" content="HelpDesk" />
+    <meta name="description" content="HelpDesk" />
+    <link href="../Imagenes/favicon.ico" rel="shortcut icon" type="image/png" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link href="css/Default.css" rel="stylesheet" type="text/css" />
+    <link href="css/Stylemenu.css" rel="stylesheet" type="text/css" />
+
+<%--    <script src="js/jscriptmenu.js" type="text/javascript"></script>
+--%>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+
+    <script type="text/javascript" charset="utf-8">google.load("jquery", "1.3");</script>
+
+    <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen"
+        title="prettyPhoto main stylesheet" charset="utf-8" />
+
+    <script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+    
+   <script src="Scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+   
+   <script  type="text/javascript">
+
+       $(document).ready(function() {
+           //agregar una nueva columna con todo el texto
+           //contenido en las columnas de la grilla
+           // contains de Jquery es CaseSentive, por eso cambiamos el texto a minuscula
+
+           $(".filtrar tr:has(td.filtro)").each(function() {
+               var t = $(this).text().toLowerCase(); //all row text
+               $("<td class='indexColumn'></td>")
+                 .hide().text(t).appendTo(this);
+           });
+
+           //Agregar el comportamiento al texto (se selecciona por el ID)
+           $("#texto").keyup(function() {
+               var s = $(this).val().toLowerCase().split(" ");
+
+               $(".filtrar tr:hidden").show();
+               $.each(s, function() {
+                   $(".filtrar tr:visible .indexColumn:not(:contains('"
+          + this + "'))").parent().hide();
+               });
+           });
+       });
+
+       function checkDate(sender, args) {
+           if (sender._selectedDate > new Date()) {
+               alert("Debe seleccionar una fecha menor a la de hoy");
+               sender._selectedDate = new Date();
+               // set the date back to the current date
+               sender._textbox.set_Value(sender._selectedDate.format(sender._format))
+           }
+       }
+       function OpenPopup() {
+           window.open("Parametrizacion/Direccion.aspx", "Direccion", "scrollbars=no,resizable=no,width=800,height=320");
+
+           return false;
+       }         
+</script>
+   
+   
+    <style type="text/css">
+        .style7
+        {
+            float: right;
+            margin-top: 10px;
+            margin-right: 35px;
+            margin-left: 0px;
+            text-align: right;
+        }
+        
+        .overlay  
+        {
+    	    position: fixed;
+    	    z-index: 1000;
+    	    top: 0px;
+    	    left: 0px;
+    	    right: 0px;
+    	    bottom: 0px;
+            background-color: #fff; 
+            filter:alpha(opacity=70);
+            opacity:0.7;
+
+        }
+        .overlayContent
+        {
+    	    z-index: 99;
+    	    margin: 250px auto;
+    	    width: 85px;
+    	    height:130px;
+    	    background-color: #fff; 
+        }
+        .overlayContent h2
+        {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+        .overlayContent img
+        {
+    	    width: 80px;
+    	    height: 80px;
+        }
+
+    </style>
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" AsyncPostBackTimeout="600"
+        EnableScriptLocalization ="true" >
+    </asp:ToolkitScriptManager>
+     <div class="encabezado">
+        <div class="logo">
+            <br />
+            &nbsp;
+            <img src="imagenes/Logo.png" style="height: 94px; width: 314px"/>
+        </div>
+            <div class="style7">                
+                <span class="gallery clearfix"><a href="Parametrizacion/Contrasena.aspx?iframe=true&amp;width=450&amp;height=200&amp;SCROLLING=no" 
+                    rel="prettyPhoto[iframe]">
+                <img src="imagenes/Profile.png" border="0" style="text-align: center" /></a>
+                </span>
+                <asp:Label ID="Label2" runat="server" Text="[Login]"></asp:Label>
+                <br />
+                <asp:Label ID="Label1" runat="server" Text="[Fecha]"></asp:Label>
+                <br />
+                <a href="LoginPage.aspx">
+                <asp:Label ID="Label4" runat="server" Text="[Cerrar sesion]" Font-Size="Small" ></asp:Label></a>
+                <br />
+            </div>
+   </div>
+   <div class="menu">
+        <img src="imagenes/borde.png" style="height: 23px; width: 1022px"/>
+    </div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        
+<%--    <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0">
+        <ProgressTemplate>
+            <div class="overlay" />
+                <div class="overlayContent">
+                    <h2>Cargando...</h2>
+                    <img src="imagenes/ajax-loader.gif" alt="Loading" border="0" />
+                </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>--%>
+    
+    <hr />
+    </form>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $(".gallery a[rel^='prettyPhoto']").prettyPhoto({ theme: 'facebook' });
+        });
+    </script>
+</body>
+</html>
