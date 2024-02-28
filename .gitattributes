@@ -1,0 +1,4 @@
+Nuevo[[:space:]]Archivo[[:space:]]WinRAR[[:space:]]ZIP.zip filter=lfs diff=lfs merge=lfs -text
+bd_multiandamios[[:space:]]-[[:space:]]camiloyaya.sql filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.sql filter=lfs diff=lfs merge=lfs -text
